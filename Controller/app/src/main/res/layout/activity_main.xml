@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- 顶部输入框 -->
+    <EditText
+        android:id="@+id/topEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入指令"
+        android:layout_alignParentTop="true"/>
+
+    <!-- 输入框下面的两个按钮 -->
+    <LinearLayout
+        android:id="@+id/topButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topEditText"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/topButton1"
+            android:layout_width="125dp"
+            android:layout_height="48dp"
+            android:text="发送"
+            android:layout_marginEnd="16dp"/>
+
+        <Button
+            android:id="@+id/topButton2"
+            android:layout_width="125dp"
+            android:layout_height="48dp"
+            android:text="设置速度"/>
+    </LinearLayout>
+
+    <!-- 中间遥感区域 -->
+    <RelativeLayout
+        android:id="@+id/joystickArea"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_below="@id/topButtons"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp">
+
+        <!-- 中间圆形遥感 -->
+        <com.example.controller.JoystickView
+            android:id="@+id/joystick"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_centerInParent="true"/>
+
+        <!-- 上按钮 -->
+        <Button
+            android:id="@+id/buttonUp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="↑"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/joystick"
+            android:layout_marginBottom="5dp"/>
+
+        <!-- 下按钮 -->
+        <Button
+            android:id="@+id/buttonDown"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="↓"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/joystick"
+            android:layout_marginTop="5dp"/>
+
+        <!-- 左按钮 -->
+        <Button
+            android:id="@+id/buttonLeft"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="←"
+            android:layout_toStartOf="@id/joystick"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"/>
+
+        <!-- 右按钮 -->
+        <Button
+            android:id="@+id/buttonRight"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="→"
+            android:layout_toEndOf="@id/joystick"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/debugScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_above="@id/bottomButtons"
+        android:layout_marginBottom="8dp"
+        android:background="#EEEEEE">
+
+        <TextView
+            android:id="@+id/debugTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="调试输出"
+            android:textColor="#000000"
+            android:textSize="16sp"/>
+    </ScrollView>
+
+
+    <!-- 连接按钮：固定在最底部 -->
+    <!-- 连接按钮和搜索按钮区域 -->
+    <LinearLayout
+        android:id="@+id/bottomButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:gravity="center">
+
+        <!-- 搜索按钮 -->
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="搜索"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- 连接按钮 + 指示灯（一个整体） -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- 连接按钮 -->
+            <Button
+                android:id="@+id/connectButton"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:text="连接"/>
+
+            <!-- 连接状态指示灯 -->
+            <View
+                android:id="@+id/connectionIndicator"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/circle_red"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
