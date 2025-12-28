@@ -198,30 +198,9 @@ int main(void)
 
   while (1)
   {
-    // ir_value=infrared_array_read(&array);
-    // printf_binary(ir_value);
     motor_set_speed(&motor_l, l_velocity);
     motor_set_speed(&motor_r, r_velocity);
     HAL_Delay(3);
-
-    continue;
-    switch (ir_value>>2 & 0x03) {
-      case 0x00: // 00
-        voiture_avance();
-        break;
-      case 0x01: // 01
-        voiture_tourn_droite();
-        break;
-      case 0x02: // 10
-        voiture_tourn_gauche();
-        break;
-      case 0x03: // 11  全黑
-        voiture_avance();
-        break;
-      default:
-        voiture_attend();
-        break;
-    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
