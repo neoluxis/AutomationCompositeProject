@@ -86,8 +86,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
       if (rx1_rv_cnt > 1) {
         rx1_buf[rx1_rv_cnt] = '\0';
         parse_cmd(rx1_buf, &l_velocity, &r_velocity);
-
-
       }
 
       rx1_rv_cnt = 0;
@@ -102,20 +100,20 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 void app_motors_init(void) {
   motor_l.timer = &htim2;
   motor_l.channel = TIM_CHANNEL_3;
-  motor_l.dir_port = MotorDir_L_GPIO_Port;
-  motor_l.dir_pin = MotorDir_L_Pin;
+  motor_l.dir_port = MotorDir_R_GPIO_Port;
+  motor_l.dir_pin = MotorDir_R_Pin;
   motor_r.timer = &htim3;
   motor_r.channel = TIM_CHANNEL_1;
-  motor_r.dir_port = MotorDir_R_GPIO_Port;
-  motor_r.dir_pin = MotorDir_R_Pin;
-// 1627
+  motor_r.dir_port = MotorDir_L_GPIO_Port;
+  motor_r.dir_pin = MotorDir_L_Pin;
+
   motor_on(&motor_l);
   motor_on(&motor_r);
   motor_set_speed_dir(&motor_l, MOTOR_DIR_FORWARD, 0);
   motor_set_speed_dir(&motor_r, MOTOR_DIR_FORWARD, 0);
 }
 
-void app_irs_init(void) { // 32615
+void app_irs_init(void) {
   infrared_init(&irir[0], IR0_GPIO_Port, IR0_Pin);
   infrared_init(&irir[1], IR3_GPIO_Port, IR3_Pin);
   infrared_init(&irir[2], IR2_GPIO_Port, IR2_Pin);
@@ -183,7 +181,7 @@ int main(void)
     motor_set_speed(&motor_l, l_velocity);
     motor_set_speed(&motor_r, r_velocity);
 
-    HAL_Delay(3);
+    HAL_Delay(3); // 1627
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

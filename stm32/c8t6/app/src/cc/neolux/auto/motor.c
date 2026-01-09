@@ -21,7 +21,7 @@ void motor_set_speed(Motor_t *motor, int speed) {
   if (speed < 0) {
     speed = -speed;
     motor_set_direction(motor, MOTOR_DIR_BACKWARD);
-  } else if (speed > 0) {
+  } else if (speed >= 0) {
     motor_set_direction(motor, MOTOR_DIR_FORWARD);
   }
   if (speed > 100) speed = 100;

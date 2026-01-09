@@ -59,10 +59,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define MotorDir_L_Pin GPIO_PIN_1
 #define MotorDir_L_GPIO_Port GPIOA
-#define Motor_L_Pin GPIO_PIN_2
-#define Motor_L_GPIO_Port GPIOA
-#define Motor_R_Pin GPIO_PIN_6
+#define Motor_R_Pin GPIO_PIN_2
 #define Motor_R_GPIO_Port GPIOA
+#define Motor_L_Pin GPIO_PIN_6
+#define Motor_L_GPIO_Port GPIOA
 #define MotorDir_R_Pin GPIO_PIN_7
 #define MotorDir_R_GPIO_Port GPIOA
 #define IR0_Pin GPIO_PIN_3

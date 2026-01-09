@@ -15,7 +15,7 @@
  * @note MOTOR_DIR_COUNT: 方向数量
  */
 typedef enum {
-    MOTOR_DIR_BACKWARD = 0,
+    MOTOR_DIR_BACKWARD =0,
     MOTOR_DIR_FORWARD,
     MOTOR_DIR_COUNT,
 } MotorDir_e;
